@@ -1,5 +1,5 @@
 # youtubedl-gui
-A simple-to-use, cross-platform graphical interface for youtube-dl.<br/><br/>
+A simple-to-use, cross-platform graphical interface for youtube-dl and yt-dlp<br/><br/>
 ![youtubedl-gui-screenshot.png](https://github.com/Jigoku/ytdl-gui/raw/master/resources/youtubedl-gui-screenshot-3.0.png)<br/>
 
 
