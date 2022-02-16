@@ -140,6 +140,9 @@ void ytdl::closeEvent(QCloseEvent *event) {
         //video format
         config_file << "Video Format: " << ui->VFormatGroup->checkedId() << std::endl;
 
+        //download command
+        config_file << "DLP: " << check_to_bool(ui->dlpCheck) << std::endl;
+
     }
 
     config_file.close();

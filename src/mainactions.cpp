@@ -38,6 +38,7 @@ mainActions::mainActions(QObject *parent) : QObject(parent)	{
             //apply checkbox settings
             bool_to_checkbox(user_settings->values[0], ui->defaultsCheck);
             bool_to_checkbox(user_settings->values[1], ui->playlistCheck);
+            bool_to_checkbox(user_settings->values[8], ui->dlpCheck);
 
             //apply dir setting
             std::string stored_value = user_settings->values[2];
@@ -233,11 +234,19 @@ void ytdl::printResult(int result_num) {
 }
 
 void ytdl::downloadAction() {
-    std::string ytdl_prog = "youtube-dl 2> /tmp/ytdl_stderr --no-warnings --all-subs";
     std::string url_str = quote + QString_to_str(ui->lineURL->text()) + quote;
     std::string directory_str = quote + QString_to_str(ui->lineBrowse->text()) + "/%(title)s.%(ext)s" + quote;
     std::string parse_output = R"(stdbuf -o0 grep -oP '^\[download\].*?\K([0-9]+)')";
     std::string thumbnail;
+
+    //
+    std::string ytdl_prog;
+    if (ui->dlpCheck->isChecked()) {
+        ytdl_prog = "yt-dlp";
+    }
+    else {
+        ytdl_prog = "youtube-dl";
+    }
 
     //Youtube playlist support
     std::string playlist;
@@ -253,7 +262,7 @@ void ytdl::downloadAction() {
 
         //Audio selected
         if (ui->Tabs->currentIndex() == 0) {
-            std::string command = ytdl_prog + " -x " + url_str + " -o " + directory_str \
+            std::string command = ytdl_prog + "2> /tmp/ytdl_stderr --no-warnings --all-subs -x " + url_str + " -o " + directory_str \
                     + " --ignore-config " + playlist + "--newline | " \
                     + parse_output;
 

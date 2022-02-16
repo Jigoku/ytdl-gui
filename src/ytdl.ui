@@ -507,6 +507,22 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="dlpCheck">
+       <property name="minimumSize">
+        <size>
+         <width>77</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="text">
+        <string>Use yt-dlp</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonDownload">
        <property name="minimumSize">
         <size>

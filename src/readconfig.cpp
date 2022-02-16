@@ -29,7 +29,7 @@ void readConfig::get_values() {
 
     if (curr_file.is_open()) {
         int counter = 0;
-        while (getline(curr_file, curr_line) && counter < 8) {
+        while (getline(curr_file, curr_line) && counter < 9) {
             std::string reduced = remove_whitespace(curr_line);
             int last_space = reduced.find_last_of(' ');
             values[counter++] = reduced.substr(last_space + 1, reduced.size() - last_space);
