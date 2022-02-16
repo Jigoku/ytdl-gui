@@ -271,7 +271,7 @@ void ytdl::downloadAction() {
 
         //Video selected
         else {
-            std::string command = ytdl_prog + whitespace + url_str + " -o " + directory_str \
+            std::string command = ytdl_prog + "2> /tmp/ytdl_stderr --no-warnings --all-subs" + whitespace + url_str + " -o " + directory_str \
                     + " --ignore-config " + playlist + "--newline | " \
                     + parse_output;
 
